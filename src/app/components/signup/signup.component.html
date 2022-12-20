@@ -1,0 +1,87 @@
+<div id="layout">
+    <div id="card">
+        <form [formGroup]="signupdata" novalidate>
+            <div id="finput">
+                <label>Name<span>*</span></label>
+                <input type="text" name="name" id="name" class="form-control" formControlName="name"
+                    placeholder="Enter Name" autocomplete="off">
+            </div>
+            <div class="error">
+                <ng-container *ngFor="let msg of message_error.name">
+                    <div class="error"
+                        *ngIf="signupdata.get('name')?.hasError(msg.type) && (signupdata.get('name')?.dirty || signupdata.get('name')?.touched)">
+                        <p id="msg">{{msg.message}}</p>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div id="finput">
+                <label>Email<span>*</span></label>
+                <input type="text" name="email" id="email" class="form-control" formControlName="email"
+                    placeholder="Enter Email" autocomplete="off">
+            </div>
+            <div class="error">
+                <ng-container *ngFor="let msg of message_error.email">
+                    <div class="error"
+                        *ngIf="signupdata.get('email')?.hasError(msg.type) && (signupdata.get('email')?.dirty || signupdata.get('email')?.touched)">
+                        <p id="msg">{{msg.message}}</p>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div id="finput">
+                <label>Mobile<span>*</span></label>
+                <input type="text" name="mobile" id="mobile" class="form-control" formControlName="mobile"
+                    placeholder="Enter Mobile Number" autocomplete="off">
+            </div>
+            <div class="error">
+                <ng-container *ngFor="let msg of message_error.mobile">
+                    <div class="error"
+                        *ngIf="signupdata.get('mobile')?.hasError(msg.type) && (signupdata.get('mobile')?.dirty || signupdata.get('mobile')?.touched)">
+                        <p id="msg">{{msg.message}}</p>
+                    </div>
+                </ng-container>
+            </div>
+
+
+            <div id="finput">
+                <label>Password<span>*</span></label>
+                <input type="password" name="pass1" #passw id="pass1" class="form-control" formControlName="password"
+                    placeholder="Enter Password">
+            </div>
+            <div class="error">
+                <ng-container *ngFor="let msg of message_error.password">
+                    <div class="error"
+                        *ngIf="signupdata.get('password')?.hasError(msg.type) && (signupdata.get('password')?.dirty || signupdata.get('password')?.touched)">
+                        <p id="msg">{{msg.message}}</p>
+                    </div>
+                </ng-container>
+            </div>
+
+
+            <div id="finput">
+                <label>Confirm Password<span>*</span></label>
+                <input type="password" name="cpass1" #cpassw id="cpass1" class="form-control" formControlName="cpassword"
+                    placeholder="Enter Confirm Password">
+            </div>
+            <div class="error">
+                <ng-container *ngFor="let msg of message_error.password">
+                    <div class="error"
+                        *ngIf="signupdata.get('cpassword')?.hasError(msg.type) && (signupdata.get('cpassword')?.dirty || signupdata.get('cpassword')?.touched)">
+                        <p id="msg">{{msg.message}}</p>
+                    </div>
+                </ng-container>
+                <ng-container>
+                    <div class="error"
+                        *ngIf="!(passw.value==cpassw.value) && (signupdata.get('cpassword')?.dirty || signupdata.get('cpassword')?.touched)">
+                        <p id="msg">Password does not match</p>
+                    </div>
+                </ng-container>
+            </div>
+            <div id="buttoncard">
+                <button type="button" class="btn btn-success" [disabled]="!signupdata.valid" (click)="onSubmit()">Sign
+                    Up</button>
+            </div>
+        </form>
+    </div>
+</div>

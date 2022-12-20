@@ -1,0 +1,78 @@
+#layout{
+    height: 100%;
+    background-color: azure;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card{
+    padding: 20px;
+    background-color:#ffff99;
+    margin: 20px 20px 20px 20px;
+    width: 30%;
+    height: max-content;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#finput {
+    margin-top: 3px;
+}
+
+label{
+    padding: 5px;
+    font-size: 15px;
+}
+
+label span{
+    color: red;
+}
+
+#msg{
+    color: red;
+    padding: 8px;
+    margin-bottom: 0px;
+}
+#button{
+    text-align: center;
+}
+#button button{
+    width: 20%;
+} 
+
+#helpcard{
+    margin-top: 10px;
+}
+
+#help{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#help a{
+    text-decoration: none;
+    
+}
+
+#signup{
+   float: left;
+   color: black;
+}
+
+#signup:hover{
+    color: rgb(0, 21, 249);
+    font-size: 15px;
+    
+}
+
+#forgot{
+   float: right;
+   color: black;
+}
+
+#forgot:hover{
+    color: rgb(0, 21, 249);
+    font-size: 15px;
+    
+}

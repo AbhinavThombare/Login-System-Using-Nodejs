@@ -1,0 +1,45 @@
+<div id="layout">
+    <div id="card">
+        <form [formGroup]="loginform" novalidate>
+            <div id="finput">
+                <label>Email<span>*</span></label>
+                <input type="text" name="name" id="name" class="form-control" formControlName="email"
+                    placeholder="Enter Email">
+            </div>
+            <div class="error">
+                <ng-container *ngFor="let msg of message_error.email">
+                    <div class="error"
+                        *ngIf="loginform.get('email')?.hasError(msg.type) && (loginform.get('email')?.dirty || loginform.get('email')?.touched)">
+                        <p id="msg">{{msg.message}}</p>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div id="finput">
+                <label>Password<span>*</span></label>
+                <input type="password" name="pass1" #passw id="pass1" class="form-control" formControlName="password"
+                    placeholder="Enter Password">
+            </div>
+            <div class="error">
+                <ng-container *ngFor="let msg of message_error.password">
+                    <div class="error"
+                        *ngIf="loginform.get('password')?.hasError(msg.type) && (loginform.get('password')?.dirty || loginform.get('password')?.touched)">
+                        <p id="msg">{{msg.message}}</p>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div id="button">
+                <button type="button" class="btn btn-success mt-3" routerLink="/main" [disabled]="!loginform.valid"
+                    (click)="onSubmit()">Login</button>
+            </div>
+
+            <div id="helpcard">
+                <div id="help">
+                    <a id="signup" routerLink="../signup">Sign Up</a>
+                    <a id="forgot" href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
