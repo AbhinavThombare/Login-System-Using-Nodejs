@@ -15,7 +15,11 @@ export class NodeServerApiService {
     return this.http.post(this.configUrl+'/users',{data},{ observe: 'response' })
   }
 
-  getuser() {
+  getUser() {
     return this.http.get(this.configUrl+'/users')
+  }
+
+  loginUser(userdata:object) {
+    return this.http.post(this.configUrl+'/user/login',{userdata},{ observe: 'response' })
   }
 }

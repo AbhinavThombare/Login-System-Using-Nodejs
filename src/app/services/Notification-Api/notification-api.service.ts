@@ -30,8 +30,8 @@ export class NotificationApiService {
     });
   }
 
-  errorAlert() {
-    this._snackBar.open('Incorrect Data','',{
+  errorAlert(msg:any) {
+    this._snackBar.open(msg,'',{
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: 3000,

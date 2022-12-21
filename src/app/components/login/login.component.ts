@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-// import {NodeServerApiService} from '../../../../services/node-server-api.service'
+import { NotificationApiService } from 'src/app/services/Notification-Api/notification-api.service';
+import {NodeServerApiService} from '../../services/Node-Server-Api/node-server-api.service'
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   }
   constructor( 
       private formBuilder:FormBuilder,
-      // private nodeserverapi : NodeServerApiService
+      private nodeserverapi : NodeServerApiService,
+      private notificationapi : NotificationApiService
       ) { 
     this.loginform = this.formBuilder.group({
       email: new FormControl('',Validators.compose([
@@ -41,7 +43,14 @@ export class LoginComponent implements OnInit {
     console.log(this.loginform.value);
     const userData = this.loginform.value
 
-    // this.nodeserverapi.newUser(userData).subscribe()
+    this.nodeserverapi.loginUser(userData).subscribe(
+      (res) => {
+        this.notificationapi.loginAlert()
+      },
+      (error) => {
+        this.notificationapi.errorAlert(error.error)
+      }
+    )
 
   }
 

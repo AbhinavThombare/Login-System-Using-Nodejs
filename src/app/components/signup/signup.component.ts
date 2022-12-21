@@ -78,7 +78,6 @@ export class SignupComponent implements OnInit {
 
     const userData = this.signupdata.value
 
-    console.log(userData)
     this.nodeserverapi.newUser(userData).subscribe((res) => {
       console.log(res.status)
       if (res.status === 201) {
@@ -88,10 +87,13 @@ export class SignupComponent implements OnInit {
           this.notificationapi.loginAlert()
         }, 3000);
       }
-      else {
-        this.notificationapi.errorAlert()
+    },
+    (error) => {
+      if(error.status === 401) {
+        this.notificationapi.errorAlert('Email Alreday Use!')
       }
-    })
+    }
+    )
 
 
   }
