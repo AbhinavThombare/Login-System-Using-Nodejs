@@ -81,10 +81,10 @@ export class SignupComponent implements OnInit {
     this.nodeserverapi.newUser(userData).subscribe((res) => {
       console.log(res.status)
       if (res.status === 201) {
-        this.router.navigate(['/login'])
+        this.router.navigate([''])
         this.notificationapi.registrationAlert()
         setTimeout(() => {
-          this.notificationapi.loginAlert()
+          this.notificationapi.loginAlert('Login Now!')
         }, 3000);
       }
     },

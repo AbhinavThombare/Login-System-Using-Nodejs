@@ -22,4 +22,8 @@ export class NodeServerApiService {
   loginUser(userdata:object) {
     return this.http.post(this.configUrl+'/user/login',{userdata},{ observe: 'response' })
   }
+
+  logoutUser(token:any){
+    return this.http.post(this.configUrl+'/user/logout',{token},{observe:'response'})
+  }
 }

@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AboutComponent } from './components/about/about.component';
+import { MainComponentComponent } from './components/main-component/main-component.component';
 
 
 
@@ -26,7 +27,8 @@ import { AboutComponent } from './components/about/about.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    MainComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -21,8 +21,8 @@ export class NotificationApiService {
     });
   }
 
-  loginAlert() {
-    this._snackBar.open('Login Now!!', '', {
+  loginAlert(msg:any) {
+    this._snackBar.open(msg, '', {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration:2000,
