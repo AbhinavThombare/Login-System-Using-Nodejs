@@ -26,4 +26,8 @@ export class NodeServerApiService {
   logoutUser(token:any){
     return this.http.post(this.configUrl+'/user/logout',{token},{observe:'response'})
   }
+
+  fileUpload(fileName: string, fileContent: string,token:any) {
+    return this.http.post(this.configUrl+'/user/fileupload',{fileName,fileContent,token})
+  }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
@@ -17,11 +18,15 @@ const routes: Routes = [
     path: 'main/:token', component: MainComponentComponent,
     children: [
       {
-        path:'about', component: AboutComponent
+        path:'home', component: HomeComponent
       },
       {
-        path:'home', component: HomeComponent
-      }
+        path:'fileupload', component: FileUploadComponent
+      },
+      {
+        path:'about', component: AboutComponent
+      },
+      
     ],
     canActivate: [AuthguardGuard],
   },

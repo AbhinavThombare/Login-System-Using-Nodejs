@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AboutComponent } from './components/about/about.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 
@@ -28,7 +29,8 @@ import { MainComponentComponent } from './components/main-component/main-compone
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    MainComponentComponent
+    MainComponentComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
