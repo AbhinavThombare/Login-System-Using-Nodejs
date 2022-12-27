@@ -16,6 +16,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AboutComponent } from './components/about/about.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { ShowFilesComponent } from './components/show-files/show-files.component';
 
 
 
@@ -30,7 +31,8 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     HomeComponent,
     AboutComponent,
     MainComponentComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    ShowFilesComponent
   ],
   imports: [
     BrowserModule,

@@ -10,39 +10,42 @@ import { NodeServerApiService } from 'src/app/services/Node-Server-Api/node-serv
 export class MainComponentComponent implements OnInit {
   token: any;
   localtoken: any;
+  itemStr: Object|null | undefined;
 
   constructor(
-    private route : ActivatedRoute,
-    private router : Router,
-    private nodeserverapi : NodeServerApiService
+    private route: ActivatedRoute,
+    private router: Router,
+    private nodeserverapi: NodeServerApiService
   ) { }
 
   ngOnInit(): void {
     // console.log(this.route.snapshot.paramMap.get('token'))
-    this.token =this.route.snapshot.paramMap.get('token')
-    this.localtoken = localStorage.getItem('token')
-
-    console.log(this.token)
-    if(this.token !== this.localtoken) {
-      console.log(this.localtoken)
-      this.nodeserverapi.logoutUser(this.localtoken).subscribe(
-        (res) => {
-          console.log(res)
-          if(res.status === 200) {
-            this.router.navigate(['/'])
-            localStorage.setItem('token','')
-          }
-        }
-      )
-    }
-    else{
-      console.log("abhinav")
-    }
-
-
-    
-  }
+    // this.token =this.route.snapshot.paramMap.get('token')
+    // this.localtoken = localStorage.getItem('token')
+    // if(!this.localtoken) {
+    //   console.log(this.localtoken)
+    //   this.nodeserverapi.logoutUser(this.localtoken).subscribe(
+    //     (res) => {
+    //       console.log(res)
+    //       if(res.status === 200) {
+    //         this.router.navigate(['/'])
+    //         localStorage.setItem('token','')
+    //       }
+    //     }
+    //   )
+    // }
+    // else{
+    //   console.log("abhinav")
+    // }
 
   
+
+
+
+  }
+
+   
+
+
 
 }

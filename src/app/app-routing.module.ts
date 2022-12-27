@@ -5,6 +5,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
+import { ShowFilesComponent } from './components/show-files/show-files.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AuthguardGuard } from './shared/authguard.guard';
 
@@ -15,16 +16,19 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   // { path: 'main/:token/about', component: AboutComponent },
   {
-    path: 'main/:token', component: MainComponentComponent,
+    path: 'main', component: MainComponentComponent,
     children: [
       {
-        path:'home', component: HomeComponent
+        path:'home', component: HomeComponent,canActivate: [AuthguardGuard]
       },
       {
-        path:'fileupload', component: FileUploadComponent
+        path:'fileupload', component: FileUploadComponent,canActivate: [AuthguardGuard]
+      }, 
+      {
+        path:'showfiles', component: ShowFilesComponent,canActivate: [AuthguardGuard]
       },
       {
-        path:'about', component: AboutComponent
+        path:'about', component: AboutComponent,canActivate: [AuthguardGuard]
       },
       
     ],

@@ -10,13 +10,15 @@ import { NotificationApiService } from 'src/app/services/Notification-Api/notifi
 })
 export class FileUploadComponent implements OnInit {
   file:any | null;
-  token: string | null | undefined;
+  // token: string | null | undefined;
   fileData: { Name: any; Size: any; Type: any; } | undefined;
   public formGroup = this.fb.group({
     file: [null, Validators.required]
   });
  
   fileName: any;
+  message: any;
+  currenttoken: any;
 
   constructor(
     private nodeserverapi : NodeServerApiService,
@@ -33,7 +35,7 @@ export class FileUploadComponent implements OnInit {
     if (event.target.files && event.target.files.length) {
       this.fileName = event.target.files[0].name;
       const [file] = event.target.files;
-      reader.readAsDataURL(file);
+      reader.readAsText(file);
      
       reader.onload = () => {
         this.formGroup.patchValue({
@@ -44,16 +46,20 @@ export class FileUploadComponent implements OnInit {
   }
  
   onSubmit(): void {
-    const token = localStorage.getItem('token')
+    this.currenttoken = JSON.parse(localStorage.getItem('token')!)
+    const token = this.currenttoken.value
+
     this.nodeserverapi.fileUpload(this.fileName, this.formGroup.get('file')?.value,token).subscribe(
       (res) => {
-        console.log(res)
-        // this.notificationapi.loginAlert(res)
+        let resSTR = JSON.stringify(res.body)
+        let resPAR = JSON.parse(resSTR)
+        this.message = resPAR.message
+        this.notificationapi.loginAlert(this.message)
       },
-      // (error) => {
-      //   console.log(error)
-      //   // this.notificationapi.errorAlert(error.message)
-      // }
+      (error) => {
+        // console.log(error)
+        this.notificationapi.errorAlert(error.message)
+      }
     );
     console.log(this.fileName)
     console.log(this.formGroup.get('file')?.value)

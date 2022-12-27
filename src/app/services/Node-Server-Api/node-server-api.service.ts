@@ -24,10 +24,18 @@ export class NodeServerApiService {
   }
 
   logoutUser(token:any){
-    return this.http.post(this.configUrl+'/user/logout',{token},{observe:'response'})
+    return this.http.post(this.configUrl+'/user/logout/'+token,{},{observe:'response'})
   }
 
   fileUpload(fileName: string, fileContent: string,token:any) {
-    return this.http.post(this.configUrl+'/user/fileupload',{fileName,fileContent,token})
+    return this.http.post(this.configUrl+'/user/fileupload/'+token,{fileName,fileContent},{observe:'response'})
+  }
+
+  getFiles(token:any) {
+    return this.http.get(this.configUrl+'/user/files/'+token)
+  }
+
+  getFileData(token:any,filename:any) {
+    return this.http.get(this.configUrl+'/user/file/'+filename+'/'+token,{observe:'response'})
   }
 }

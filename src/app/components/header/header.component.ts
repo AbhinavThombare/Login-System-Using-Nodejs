@@ -9,7 +9,7 @@ import { NotificationApiService } from 'src/app/services/Notification-Api/notifi
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  token: any;
+  currenttoken: any;
 
   constructor(
     private route : ActivatedRoute,
@@ -22,12 +22,14 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    this.token =this.route.snapshot.paramMap.get('token')
-    this.nodeserverapi.logoutUser(this.token).subscribe(
+    // this.token =this.route.snapshot.paramMap.get('token')
+    this.currenttoken = JSON.parse(localStorage.getItem('token')!)
+    const token = this.currenttoken.value
+    this.nodeserverapi.logoutUser(token).subscribe(
       (res) => {
         if(res.status === 200) {
           this.router.navigate(['/'])
-          localStorage.setItem('token','')
+          localStorage.removeItem('token')
           this.notificationapi.loginAlert('Logout Successfully')
         }
       },

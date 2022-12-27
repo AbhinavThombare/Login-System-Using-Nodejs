@@ -56,8 +56,13 @@ export class LoginComponent implements OnInit {
           let resSTR = JSON.stringify(res.body)
           let resPAR = JSON.parse(resSTR)
           this.token = resPAR.token
-          localStorage.setItem('token', this.token)
-          this.router.navigate(['/main/' + this.token + '/home'],)
+          console.log(this.token)
+          const data = {
+              value: this.token,                  // store the value within this object
+              expiry: Date.now()+ 600000,   // store the TTL (time to live)
+            }
+          localStorage.setItem('token', JSON.stringify(data))
+          this.router.navigate(['/main/home'],)
           this.notificationapi.loginAlert('Login Successfull!')
         }
       },
