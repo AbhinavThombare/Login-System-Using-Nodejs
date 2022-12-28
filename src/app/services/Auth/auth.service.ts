@@ -27,9 +27,7 @@ export class AuthService {
     const now = new Date()
 
     if (now.getTime() > item.expiry) {
-      this.nodeserverapi.logoutUser(item.value).subscribe(
-        (res) => console.log(res)
-      )
+      this.nodeserverapi.logoutUser(item.value).subscribe()
       localStorage.removeItem('token')
       return null
     }

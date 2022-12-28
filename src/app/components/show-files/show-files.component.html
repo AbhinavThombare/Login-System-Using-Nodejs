@@ -1,6 +1,15 @@
 <div class="layout">
-    <h1>Abhinav</h1>
-    <ul *ngFor="let item of filesData;">
-        <li><a (click)="file(item)">{{item}}</a></li>
-    </ul>
+    <h1>Uploaded Files</h1>
+    <div id="show-files" *ngIf="filesData.length !==0; else elseblock">
+        <ul *ngFor="let item of filesData; let i = index">
+            <li><a (click)="file(item._id,item.filename)"><h3>{{item.fileName}}</h3></a></li>
+        </ul>
+    </div>
+    <ng-template #elseblock>
+        <div  id="elseblock">
+            <h2>No files found!</h2>
+        </div>
+    </ng-template>
+    
+    
 </div>

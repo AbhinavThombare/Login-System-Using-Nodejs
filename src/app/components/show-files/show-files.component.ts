@@ -8,7 +8,7 @@ import { NodeServerApiService } from 'src/app/services/Node-Server-Api/node-serv
 })
 export class ShowFilesComponent implements OnInit {
   currenttoken: any;
-  filesData: any;
+  filesData: any =[];
 
   constructor(
     private nodeserverapi: NodeServerApiService
@@ -23,20 +23,24 @@ export class ShowFilesComponent implements OnInit {
     const token = this.currenttoken.value
     this.nodeserverapi.getFiles(token).subscribe(
       (res) => {
-        console.log(res)
         this.filesData = res
       }
     )
   }
 
-  file(item: any) {
+  file(id: any,name:any) {
     this.currenttoken = JSON.parse(localStorage.getItem('token')!)
     const token = this.currenttoken.value
-    this.nodeserverapi.getFileData(token, item).subscribe(
+    this.nodeserverapi.getFileData(token, id,name).subscribe(
       (res) => {
         const fileSTR = JSON.stringify(res.body)
         const filePAR = JSON.parse(fileSTR)
-        console.log(filePAR.fileContent)
+        
+        const source = `${filePAR.fileContent}`;
+        const link = document.createElement("a");
+        link.href = source;
+        link.download = `${filePAR.fileName}`
+        link.click();
       }
     )
   }

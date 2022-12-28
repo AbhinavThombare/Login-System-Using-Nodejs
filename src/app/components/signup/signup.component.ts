@@ -79,7 +79,6 @@ export class SignupComponent implements OnInit {
     const userData = this.signupdata.value
 
     this.nodeserverapi.newUser(userData).subscribe((res) => {
-      console.log(res.status)
       if (res.status === 201) {
         this.router.navigate([''])
         this.notificationapi.registrationAlert()

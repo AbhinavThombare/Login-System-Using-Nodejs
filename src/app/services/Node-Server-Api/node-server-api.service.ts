@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { retry } from 'rxjs';
 
 
 @Injectable({
@@ -35,7 +36,11 @@ export class NodeServerApiService {
     return this.http.get(this.configUrl+'/user/files/'+token)
   }
 
-  getFileData(token:any,filename:any) {
-    return this.http.get(this.configUrl+'/user/file/'+filename+'/'+token,{observe:'response'})
+  getFileData(token:any,id:any,filename:any) {
+    return this.http.get(this.configUrl+'/user/file/'+id+'/'+filename+'/'+token,{observe:'response'})
+  }
+
+  testUpload(name:any,size:any,type:any) {
+    return this.http.post(this.configUrl+'/test/fileupload',{name,size,type})
   }
 }

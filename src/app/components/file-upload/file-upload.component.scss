@@ -1,7 +1,19 @@
-.layout{
-    padding-top: 100px;
+.layout {
+    // padding-top: 100px;
+    padding: 100px 10px 10px 10px;
+    margin-right: 200px;
+    margin-left: 200px;
+    text-align: center
+}
+.layout h1{
+    margin-bottom: 0px;
+}
+.input-layout{
+   padding: 10px;
 }
 
-#fileupload {
-    width: 40%;
+#fileinput {
+    margin-right: 50px;
+    margin-left: 50px;
+    width: 80%;
 }

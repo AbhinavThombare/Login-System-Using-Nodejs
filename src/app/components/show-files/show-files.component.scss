@@ -1,4 +1,32 @@
 .layout {
-    margin-top: 100px;
-    
+   padding: 100px 10px 10px 10px;
+   margin-right: 200px;
+   margin-left: 200px;
+}
+.layout h1 {
+    text-align: center ;
+}
+#show-files {
+    padding-right: 200px;
+    padding-left: 200px;
+}
+
+#show-files li{
+    width: fit-content;
+}
+
+#show-files li:hover {
+    color: blue;
+}
+
+#elseblock {
+    margin-left: 330px;
+    margin-right: 330px;
+    text-align: center;
+    height: 100px;
+    width: 200px;
+}
+
+#elseblock h2{
+    padding: 35px 30px 35px 30px;
 }

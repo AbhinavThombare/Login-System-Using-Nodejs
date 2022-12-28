@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
 
     this.nodeserverapi.loginUser(userData).subscribe(
       (res) => {
-        console.log(res)
         if (res.status === 200) {
           // this.token = res.body
           // this.token = JSON.parse(this.resToken)
@@ -56,7 +55,6 @@ export class LoginComponent implements OnInit {
           let resSTR = JSON.stringify(res.body)
           let resPAR = JSON.parse(resSTR)
           this.token = resPAR.token
-          console.log(this.token)
           const data = {
               value: this.token,                  // store the value within this object
               expiry: Date.now()+ 600000,   // store the TTL (time to live)
@@ -67,7 +65,6 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error)
         if (error.status === 0) {
           this.notificationapi.errorAlert('Server Error, Please Try Again Later!')
         }
