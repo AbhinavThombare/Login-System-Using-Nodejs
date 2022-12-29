@@ -17,6 +17,7 @@ import { AboutComponent } from './components/about/about.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ShowFilesComponent } from './components/show-files/show-files.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 
@@ -32,7 +33,8 @@ import { ShowFilesComponent } from './components/show-files/show-files.component
     AboutComponent,
     MainComponentComponent,
     FileUploadComponent,
-    ShowFilesComponent
+    ShowFilesComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

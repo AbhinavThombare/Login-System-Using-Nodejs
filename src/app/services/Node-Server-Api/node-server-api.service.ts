@@ -16,7 +16,7 @@ export class NodeServerApiService {
     return this.http.post(this.configUrl+'/users',{data},{ observe: 'response' })
   }
 
-  getUser() {
+  getUsers() {
     return this.http.get(this.configUrl+'/users')
   }
 
@@ -42,5 +42,13 @@ export class NodeServerApiService {
 
   testUpload(name:any,size:any,type:any) {
     return this.http.post(this.configUrl+'/test/fileupload',{name,size,type})
+  }
+
+  getUser(email:any){
+    return this.http.get(this.configUrl+'/user/update/'+email,{observe:'response'})
+  }
+
+  updateUser(data:any) {
+    return this.http.post(this.configUrl+'/user/update',data,{observe:'response'})
   }
 }

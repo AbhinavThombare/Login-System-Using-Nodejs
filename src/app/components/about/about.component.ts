@@ -18,7 +18,7 @@ export class AboutComponent implements OnInit {
   }
 
   getUser(){
-    this.nodeserverapi.getUser().subscribe((res:any) => {
+    this.nodeserverapi.getUsers().subscribe((res:any) => {
       this.getuser = res
     })
   }

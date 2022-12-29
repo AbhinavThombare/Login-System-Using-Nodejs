@@ -67,16 +67,16 @@
             <div class="error">
                 <ng-container *ngFor="let msg of message_error.password">
                     <div class="error"
-                        *ngIf="signupdata.get('cpassword')?.hasError(msg.type) && (signupdata.get('cpassword')?.dirty || signupdata.get('cpassword')?.touched)">
+                        *ngIf="(signupdata.get('cpassword')?.hasError(msg.type) && (signupdata.get('cpassword')?.dirty || signupdata.get('cpassword')?.touched)) ; else elseblock">
                         <p id="msg">{{msg.message}}</p>
                     </div>
                 </ng-container>
-                <ng-container>
+                <ng-template #elseblock>
                     <div class="error"
                         *ngIf="!(passw.value==cpassw.value) && (signupdata.get('cpassword')?.dirty || signupdata.get('cpassword')?.touched)">
                         <p id="msg">Password does not match</p>
                     </div>
-                </ng-container>
+                </ng-template>
             </div>
             <div id="buttoncard">
                 <button type="button" class="btn btn-success" [disabled]="!signupdata.valid" (click)="onSubmit()">Sign
